@@ -39,3 +39,8 @@ Use the provided `gfx.h` and `gfx.c` code to create a playable space invaders ty
 Use the provided `gfx.h` and `gfx.c` code to create an application to explore the Mandelbrot
 set. https://en.wikipedia.org/wiki/Mandelbrot_set
 
+## Markov Chain simulation
+### Value: up to 50
+
+https://en.wikipedia.org/wiki/Markov_chain
+
