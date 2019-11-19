@@ -44,3 +44,19 @@ set. https://en.wikipedia.org/wiki/Mandelbrot_set
 
 https://en.wikipedia.org/wiki/Markov_chain
 
+
+## 1D Convolution and Cross-correlation
+### Value: up to 50
+
+Implement the following two functions:
+
+```
+template<typename T>
+std::vector<T> xcorr(const std::vector<T>& a, const std::vector<T>& b);
+template<typename T>
+std::vector<T> conv(const std::vector<T>& a, const std::vector<T>& b);
+```
+
+https://en.wikipedia.org/wiki/Cross-correlation
+https://en.wikipedia.org/wiki/Convolution
+
