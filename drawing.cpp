@@ -29,7 +29,7 @@ void draw_circle(int xc, int yc, int radius)
 	draw_polygon(x, y, 18, true);
 }
 
-int draw_state(int x, int y)
+void draw_state(int x, int y)
 {
 	gfx_clear();
 
@@ -50,26 +50,56 @@ int main()
 {
 	gfx_open(500, 500, "My first window");
 
-	int x = 50;
-	int y = 50;
+	// start in middle of the screen
+	int x = gfx_xsize() / 2;
+	int y = gfx_ysize() / 2;
+	int dx = 1;
+	int dy = 1;
+
 	while(true)
 	{
 		
 		if (gfx_event_waiting())
 		{
 			int button = gfx_wait();
-			std::cout << "got event: " << button << std::endl;
-			if (button == 'x')
+
+			// print information about the event
+			std::cout << "got event: " << button;
+			// print character keys
+			if (button > 31 && button < 128) std::cout << " " << char(button);
+			// mouse events
+			if (button < 10) std::cout << " at pos (" << gfx_xpos() << "," << gfx_ypos() << ")";
+			std::cout << std::endl;
+
+			// when do we quit?
+			if (button == 'x' || button == 'q')
 				break;
+
+			// up arrow
+			if (button == 65431 || button == 65362) dy--;
+			// down arrow
+			if (button == 65433 || button == 65364) dy++;
+			// left arroow
+			if (button == 65430 || button == 65361) dx--;
+			// right arroow
+			if (button == 65432 || button == 65363) dx++;
 		}
 		else
 		{
-			x = x + 1;
-			y = y + 1;
-			if (x > 500) x = 10;
-			if (y > 500) y = 10;
+			// move the centroids
+			x = x + dx;
+			y = y + dy;
 
+			// did we go past edge of window?
+			if (x > gfx_xsize()) x = 0;
+			if (y > gfx_ysize()) y = 0;
+			if (x < 0) x = gfx_xsize();
+			if (y < 0) y = gfx_ysize();
+
+			// sleep 10,000 usec or 10 msec.
 			usleep(10000);
+
+			// update the drawing
 			draw_state(x, y);
 		}
 	}
