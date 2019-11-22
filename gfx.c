@@ -166,7 +166,7 @@ int gfx_event_waiting()
 
 /* Wait for the user to press a key or mouse button. */
 
-char gfx_wait()
+int gfx_wait()
 {
 	XEvent event;
 
