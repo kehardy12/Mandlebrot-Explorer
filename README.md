@@ -19,7 +19,7 @@ Deliverables:
   1. Report showing time to load the sorted `numbers` file, time to lookup the values in `search`
   
 ## HashMap ADT
-### Value: up to 200
+### Value: up to 100
 Implement a HashMap ADT using the concepts decribed in the following Wikipedia article and :
 https://en.wikipedia.org/wiki/Hash_table
 
