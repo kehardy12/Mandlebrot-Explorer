@@ -151,7 +151,9 @@ int gfx_event_waiting()
 	while (1) {
 		if(XCheckMaskEvent(gfx_display,-1,&event)) {
 			if (event.type==KeyPress
-				|| event.type==ConfigureNotify
+				|| (event.type==ConfigureNotify &&
+					(saved_xsize != event.xconfigure.width ||
+					saved_ysize != event.xconfigure.height))
 				|| event.type==ButtonPress) {
 				XPutBackEvent(gfx_display,&event);
 				return 1;
@@ -187,7 +189,7 @@ int gfx_wait()
 			saved_xsize = event.xconfigure.width;
 			saved_ysize = event.xconfigure.height;
 			return -128;
-		}
+	}
 	}
 }
 
