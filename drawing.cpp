@@ -68,7 +68,8 @@ int main()
 			// print character keys
 			if (button > 31 && button < 128) std::cout << " " << char(button);
 			// mouse events
-			if (button < 10) std::cout << " at pos (" << gfx_xpos() << "," << gfx_ypos() << ")";
+			else if (button == -128) std::cout << " resize (" << gfx_xsize() << "," << gfx_ysize() << ")";
+			else if (button < 10) std::cout << " at pos (" << gfx_xpos() << "," << gfx_ypos() << ")";
 			std::cout << std::endl;
 
 			// when do we quit?
