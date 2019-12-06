@@ -1,10 +1,13 @@
-CFLAGS=-g -Wall
-CXXFLAGS=-g -Wall
+CXXFLAGS=-g
 
-LDLIBS=-lX11 -lm
+LDLIBS=-lX11 -lstdc++ -lm
 
-LINK.o = $(CXX) $(LDFLAGS) $(TARGET_ARCH)
 
-drawing: drawing.o gfx.o
-clean:
-	rm -f drawing *.o
+
+mandelbrot: mandelbrot.o gfx.o complex.o
+
+
+
+clean: 
+
+	rm -f mandelbrot *.o
